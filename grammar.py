@@ -8,7 +8,6 @@ def ReadFromFile(namaFile):
     for i in range(len(res)):
         key = res[i][0]
         Dict[key] = res[i][1:]
-    return res
 
 
 def eliminateTerminalwithNonTerminalRHS():
@@ -87,11 +86,8 @@ def eliminateMoreTwoNonTerminalRHS():
         
         Dict[k] = newProduction
                         
-
-
-ReadFromFile("test.txt")
-print(Dict)
-eliminateTerminalwithNonTerminalRHS()
-print(Dict)
-eliminateMoreTwoNonTerminalRHS()
-print(Dict)
+def makeRule(file):
+    ReadFromFile(file)
+    eliminateTerminalwithNonTerminalRHS()
+    eliminateMoreTwoNonTerminalRHS()
+    return Dict
