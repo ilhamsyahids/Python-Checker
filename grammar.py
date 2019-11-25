@@ -16,7 +16,6 @@ def ReadFromFile(namaFile):
     for i in range(len(res)):
         key = res[i][0]
         Dict[key] = res[i][1:]
-    return res
 
 
 def eliminateTerminalwithNonTerminalRHS():
@@ -119,3 +118,10 @@ eliminateMoreTwoNonTerminalRHS()
 print(Dict)
 changeFormat()
 print(Dict)
+
+def makeRule(file):
+    ReadFromFile(file)
+    eliminateTerminalwithNonTerminalRHS()
+    eliminateMoreTwoNonTerminalRHS()
+    changeFormat()
+    return Dict
