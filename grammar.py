@@ -118,19 +118,19 @@ def changeFormat():
         newRes.append(temp)
         Dict[k] = newRes
 
-
-# ReadFromFile("test.txt")
-# print(Dict)
-# eliminateTerminalwithNonTerminalRHS()
-# print(Dict)
-# eliminateMoreTwoNonTerminalRHS()
-# print(Dict)
-# changeFormat()
-# print(Dict)
-
 def makeRule(file):
     ReadFromFile(file)
     eliminateTerminalwithNonTerminalRHS()
     eliminateMoreTwoNonTerminalRHS()
     changeFormat()
     return Dict
+
+if __name__ == "__main__":
+    ReadFromFile("test.txt")
+    print(Dict)
+    eliminateTerminalwithNonTerminalRHS()
+    print(Dict)
+    eliminateMoreTwoNonTerminalRHS()
+    print(Dict)
+    changeFormat()
+    print(Dict)

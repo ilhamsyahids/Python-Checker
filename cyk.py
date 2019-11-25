@@ -68,12 +68,13 @@ def printTabel():
             print(tabel[row][col],end=' ')
         print()
 
-print('Ini rule')
-print(rule)
-cyk()
-print('\nIni hasil')
-printTabel()
-if ('S' in tabel[banyakTerminal-1][0]):
-    print('Accepted')
-else:
-    print('Error')
+if __name__ == "__main__":    
+    print('Ini rule')
+    print(rule)
+    cyk()
+    print('\nIni hasil')
+    printTabel()
+    if ('S' in tabel[banyakTerminal-1][0]):
+        print('Accepted')
+    else:
+        print('Error')
