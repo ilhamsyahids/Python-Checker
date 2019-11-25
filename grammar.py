@@ -22,20 +22,29 @@ def eliminateTerminalwithNonTerminalRHS():
     listKey = [k for k in Dict]
     for posK in range(len(listKey)):
         k = listKey[posK]
-        if (len(Dict[k])>1):
+        i = 0
+        while(i<len(Dict[k])):
             isExistTerminal = False
             isExistNonTerminal = False
-            for i in range(len(Dict[k])):
-                if (Dict[k][i] in listTerminal):
+            for j in range(i,len(Dict[k])):
+                if ((Dict[k][j] == "|") or (j==len(Dict[k])-1)):
+                    if(isExistNonTerminal and isExistTerminal):
+                        for pos in range(i,j):
+                            if (Dict[k][pos] in listTerminal):
+                                Dict[k][pos] = "-"+Dict[k][pos]+"-"
+                                Dict["-"+Dict[k][pos]+"-"] = [Dict[k][pos]]
+                    i = j+1
+                    break
+                elif (Dict[k][j] in listTerminal):
                     isExistTerminal = True
                 else:
                     isExistNonTerminal = True
-            if (isExistTerminal and isExistNonTerminal):
-                for i in range(len(Dict[k])):
-                    if (Dict[k][i] in listTerminal):
-                        x = Dict[k][i]
-                        Dict[k][i] = "-"+x+"-"
-                        Dict["-"+x+"-"] = [x]
+
+            if(isExistNonTerminal and isExistTerminal):
+                for pos in range(i,len(Dict[k])):
+                    if (Dict[k][pos] in listTerminal):
+                        Dict[k][pos] = "-"+Dict[k][pos]+"-"
+                        Dict["-"+Dict[k][pos]+"-"] = [Dict[k][pos]]
 
 
 def eliminateMoreTwoNonTerminalRHS():
@@ -123,5 +132,5 @@ def makeRule(file):
     ReadFromFile(file)
     eliminateTerminalwithNonTerminalRHS()
     eliminateMoreTwoNonTerminalRHS()
-    changeFormat()
+    
     return Dict

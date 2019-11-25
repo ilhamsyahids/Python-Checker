@@ -1,3 +1,3 @@
 S -> A B H | C D E F G
-A -> A a
-B -> B b c
+A -> A A | a
+B -> B B | b
