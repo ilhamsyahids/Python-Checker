@@ -1,10 +1,18 @@
 Dict = {}
-listTerminal = ['a','b']
+listTerminal = ['a','b','c']
 
 def ReadFromFile(namaFile):
     with open(namaFile) as cfg:
         lines = cfg.readlines()
     res = [i.strip().replace('->', '').split() for i in lines]
+    resBaru = []
+    temp = []
+    for i in range(len(res)):
+        if (res[i]=='|'):
+            resBaru.append(temp)
+            temp = []
+        else:
+            temp.append(res)
     for i in range(len(res)):
         key = res[i][0]
         Dict[key] = res[i][1:]
@@ -87,6 +95,20 @@ def eliminateMoreTwoNonTerminalRHS():
         
         Dict[k] = newProduction
                         
+def changeFormat():
+    listKey = [k for k in Dict]
+    for posK in range(len(listKey)):
+        k = listKey[posK]
+        newRes = []
+        temp = []
+        for e in Dict[k]:
+            if (e=='|'):
+                newRes.append(temp)
+                temp = []
+            else:
+                temp.append(e)
+        newRes.append(temp)
+        Dict[k] = newRes
 
 
 ReadFromFile("test.txt")
@@ -94,4 +116,6 @@ print(Dict)
 eliminateTerminalwithNonTerminalRHS()
 print(Dict)
 eliminateMoreTwoNonTerminalRHS()
+print(Dict)
+changeFormat()
 print(Dict)
