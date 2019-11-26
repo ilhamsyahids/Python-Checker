@@ -4,7 +4,7 @@ import readFile
 terminalInput = readFile.inputFromText('coba.txt')
 print(terminalInput)
 banyakTerminal = len(terminalInput)
-rule = grammar.makeRule('test.txt')
+rule = grammar.makeRule('grammar.txt')
 tabel = [[[] for j in range(banyakTerminal)] for i in range(banyakTerminal)]
 dp = {}
 
@@ -14,7 +14,10 @@ def nonTerminalOf(X):
     for key, val in rule.items():
         if (X in val):
             resNonTerminal.append(key)
-    return resNonTerminal
+    if (resNonTerminal==[]):
+        return ['OBJECT']
+    else:
+        return resNonTerminal
 
 
 def searchTerminal(X):
@@ -72,11 +75,12 @@ def printTabel():
 
 if __name__ == "__main__":    
     print('Ini rule')
-    print(rule)
+    for k,v in sorted(rule.items()):
+        print(k,v)
     cyk()
     print('\nIni hasil')
     printTabel()
     if ('S' in tabel[banyakTerminal-1][0]):
         print('Accepted')
     else:
-        print('Error')
+        print('Syntax Error')

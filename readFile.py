@@ -5,6 +5,7 @@ def inputFromText(namaFile):
     temp = ""
     for line in fin.readlines():
         line = line.strip()
+        print(line)
         for cc in line:
             if (cc==" "):
                 hasil.append(temp)
