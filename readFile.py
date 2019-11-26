@@ -1,6 +1,6 @@
 def inputFromText(namaFile):
     fin = open(namaFile)
-    terminal = ["def","(",")",":","'"] # getTerm?inal()
+    terminal = getTerminal('terminal.txt')
     hasil = []
     temp = ""
     for line in fin.readlines():
@@ -34,5 +34,4 @@ def getTerminal(namaFile):
 
 
 if __name__ == "__main__":
-    # inputFromText('haha')
-    getTerminal("terminal.txt")
+    inputFromText('coba.txt')
