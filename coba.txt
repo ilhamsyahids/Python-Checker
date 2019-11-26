@@ -1,3 +1,2 @@
-S -> A B
-A -> a a
-B -> b b
+def cok():
+    print('jancuk')

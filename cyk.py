@@ -1,6 +1,7 @@
 import grammar
+import readFile
 
-terminalInput = ['a', 'a', 'b', 'b']  # dari input .txt
+terminalInput = readFile.inputFromText('coba.txt')
 banyakTerminal = len(terminalInput)
 rule = grammar.makeRule('test.txt')
 tabel = [[[] for j in range(banyakTerminal)] for i in range(banyakTerminal)]
