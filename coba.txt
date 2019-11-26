@@ -1,2 +1,2 @@
-def cok():
-    print('jancuk')
+import object as object 
+import object 

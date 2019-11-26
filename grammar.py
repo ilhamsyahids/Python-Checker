@@ -1,5 +1,6 @@
 Dict = {}
-listTerminal = [':','(',')','if']
+listTerminal = ['import', 'from', 'as', 'object', '\\n']
+
 
 def ReadFromFile(namaFile):
     with open(namaFile) as cfg:
@@ -8,7 +9,7 @@ def ReadFromFile(namaFile):
     resBaru = []
     temp = []
     for i in range(len(res)):
-        if (res[i]=='|'):
+        if (res[i] == '|'):
             resBaru.append(temp)
             temp = []
         else:
@@ -23,13 +24,13 @@ def eliminateTerminalwithNonTerminalRHS():
     for posK in range(len(listKey)):
         k = listKey[posK]
         i = 0
-        while(i<len(Dict[k])):
+        while(i < len(Dict[k])):
             isExistTerminal = False
             isExistNonTerminal = False
-            for j in range(i,len(Dict[k])):
-                if ((Dict[k][j] == "|") or (j==len(Dict[k])-1)):
+            for j in range(i, len(Dict[k])):
+                if ((Dict[k][j] == "|") or (j == len(Dict[k])-1)):
                     if(isExistNonTerminal and isExistTerminal):
-                        for pos in range(i,j):
+                        for pos in range(i, j):
                             if (Dict[k][pos] in listTerminal):
                                 Dict[k][pos] = "-"+Dict[k][pos]+"-"
                                 Dict["-"+Dict[k][pos]+"-"] = [Dict[k][pos]]
@@ -41,7 +42,7 @@ def eliminateTerminalwithNonTerminalRHS():
                     isExistNonTerminal = True
 
             if(isExistNonTerminal and isExistTerminal):
-                for pos in range(i,len(Dict[k])):
+                for pos in range(i, len(Dict[k])):
                     if (Dict[k][pos] in listTerminal):
                         Dict[k][pos] = "-"+Dict[k][pos]+"-"
                         Dict["-"+Dict[k][pos]+"-"] = [Dict[k][pos]]
@@ -55,7 +56,7 @@ def eliminateMoreTwoNonTerminalRHS():
         temp = []
         newProduction = []
         for i in range(len(Dict[k])):
-            if (Dict[k][i]=='|'):
+            if (Dict[k][i] == '|'):
                 if (len(temp) > 2):
                     isProses = True
                     j = len(temp)-1
@@ -70,8 +71,7 @@ def eliminateMoreTwoNonTerminalRHS():
                             temp.append(str2+"_"+str1)
                             Dict[str2+"_"+str1] = [str2, str1]
                             j = j-1
-                
-                
+
                 newProduction = newProduction + temp
                 newProduction.append("|")
                 temp = []
@@ -100,12 +100,10 @@ def eliminateMoreTwoNonTerminalRHS():
         else:
             newProduction = newProduction + temp
             temp = []
-        
+
         Dict[k] = newProduction
 
 
-
-        
 def changeFormat():
     listKey = [k for k in Dict]
     for posK in range(len(listKey)):
@@ -113,13 +111,14 @@ def changeFormat():
         newRes = []
         temp = []
         for e in Dict[k]:
-            if (e=='|'):
+            if (e == '|'):
                 newRes.append(temp)
                 temp = []
             else:
                 temp.append(e)
         newRes.append(temp)
         Dict[k] = newRes
+
 
 def eiminateOneNonTerminal():
     # A -> B | C
@@ -129,10 +128,10 @@ def eiminateOneNonTerminal():
         k = listKey[posK]
         temp = Dict[k]
         for eList in temp:
-            if (len(eList)==1):
+            if (len(eList) == 1):
                 e = eList[0]
                 if (not (e in listTerminal)):
-                # print(e)
+                    # print(e)
                     targetList = Dict[e]
                     for eTargetList in targetList:
                         newProduction.append(eTargetList)
@@ -142,21 +141,26 @@ def eiminateOneNonTerminal():
                 newProduction.append(eList)
         Dict[k] = newProduction
 
+
 def makeRule(file):
     ReadFromFile(file)
     eliminateTerminalwithNonTerminalRHS()
     eliminateMoreTwoNonTerminalRHS()
     changeFormat()
+    eiminateOneNonTerminal()
+    eiminateOneNonTerminal()
     return Dict
+
 
 if __name__ == "__main__":
     ReadFromFile("test.txt")
-    print(Dict)
+    # print(Dict)
     eliminateTerminalwithNonTerminalRHS()
-    print(Dict)
+    # print(Dict)
     eliminateMoreTwoNonTerminalRHS()
-    print(Dict)
+    # print(Dict)
     changeFormat()
-    print(Dict)
+    # print(Dict)
+    eiminateOneNonTerminal()
     eiminateOneNonTerminal()
     print(Dict)

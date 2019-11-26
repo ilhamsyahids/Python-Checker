@@ -2,6 +2,7 @@ import grammar
 import readFile
 
 terminalInput = readFile.inputFromText('coba.txt')
+print(terminalInput)
 banyakTerminal = len(terminalInput)
 rule = grammar.makeRule('test.txt')
 tabel = [[[] for j in range(banyakTerminal)] for i in range(banyakTerminal)]

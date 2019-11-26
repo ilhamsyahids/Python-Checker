@@ -18,7 +18,8 @@ def inputFromText(namaFile):
                 temp = temp + cc
         if (temp!=""):
             hasil.append(temp)
-        hasil.append('\n')
+        hasil.append('\\n')
+    hasil.pop()
     return hasil
         
 def getTerminal(namaFile):
