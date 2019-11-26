@@ -1,5 +1,5 @@
 Dict = {}
-listTerminal = ['a','b','c']
+listTerminal = [':','(',')','if']
 
 def ReadFromFile(namaFile):
     with open(namaFile) as cfg:
@@ -131,9 +131,13 @@ def eiminateOneNonTerminal():
         for eList in temp:
             if (len(eList)==1):
                 e = eList[0]
-                targetList = Dict[e]
-                for eTargetList in targetList:
-                    newProduction.append(eTargetList)
+                if (not (e in listTerminal)):
+                # print(e)
+                    targetList = Dict[e]
+                    for eTargetList in targetList:
+                        newProduction.append(eTargetList)
+                else:
+                    newProduction.append(eList)
             else:
                 newProduction.append(eList)
         Dict[k] = newProduction
@@ -153,4 +157,6 @@ if __name__ == "__main__":
     eliminateMoreTwoNonTerminalRHS()
     print(Dict)
     changeFormat()
+    print(Dict)
+    eiminateOneNonTerminal()
     print(Dict)
