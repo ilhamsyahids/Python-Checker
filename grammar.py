@@ -102,7 +102,10 @@ def eliminateMoreTwoNonTerminalRHS():
             temp = []
         
         Dict[k] = newProduction
-                        
+
+
+
+        
 def changeFormat():
     listKey = [k for k in Dict]
     for posK in range(len(listKey)):
@@ -117,6 +120,23 @@ def changeFormat():
                 temp.append(e)
         newRes.append(temp)
         Dict[k] = newRes
+
+def eiminateOneNonTerminal():
+    # A -> B | C
+    listKey = [k for k in Dict]
+    for posK in range(len(listKey)):
+        newProduction = []
+        k = listKey[posK]
+        temp = Dict[k]
+        for eList in temp:
+            if (len(eList)==1):
+                e = eList[0]
+                targetList = Dict[e]
+                for eTargetList in targetList:
+                    newProduction.append(eTargetList)
+            else:
+                newProduction.append(eList)
+        Dict[k] = newProduction
 
 def makeRule(file):
     ReadFromFile(file)
