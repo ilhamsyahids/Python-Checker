@@ -21,6 +21,16 @@ def inputFromText(namaFile):
         hasil.append('\n')
     return hasil
         
+def getTerminal(namaFile):
+    fin = open(namaFile)
+    allTerminals = []
+    for line in fin.readlines():
+        line = line.strip()
+        allTerminals.append(line)
+    print(allTerminals)
+    return allTerminals
+
 
 if __name__ == "__main__":
-    inputFromText('haha')
+    # inputFromText('haha')
+    getTerminal("terminal.txt")
