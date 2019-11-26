@@ -1,10 +1,11 @@
 def inputFromText(namaFile):
     fin = open(namaFile)
-    terminal = ["def","(",")",":","'"] # getTerm?inal()
+    terminal = getTerminal('terminal.txt')
     hasil = []
-    temp = ""
     for line in fin.readlines():
+        temp = ""
         line = line.strip()
+        print(line)
         for cc in line:
             if (cc==" "):
                 hasil.append(temp)
@@ -28,10 +29,9 @@ def getTerminal(namaFile):
     for line in fin.readlines():
         line = line.strip()
         allTerminals.append(line)
-    print(allTerminals)
+    # print(allTerminals)
     return allTerminals
 
 
 if __name__ == "__main__":
-    # inputFromText('haha')
-    getTerminal("terminal.txt")
+    inputFromText('coba.txt')

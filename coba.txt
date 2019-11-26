@@ -1,2 +1,4 @@
 import object as object 
 import object 
+def cok():
+    print()
