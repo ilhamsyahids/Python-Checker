@@ -2,8 +2,8 @@ def inputFromText(namaFile):
     fin = open(namaFile)
     terminal = getTerminal('terminal.txt')
     hasil = []
-    temp = ""
     for line in fin.readlines():
+        temp = ""
         line = line.strip()
         print(line)
         for cc in line:
@@ -29,7 +29,7 @@ def getTerminal(namaFile):
     for line in fin.readlines():
         line = line.strip()
         allTerminals.append(line)
-    print(allTerminals)
+    # print(allTerminals)
     return allTerminals
 
 

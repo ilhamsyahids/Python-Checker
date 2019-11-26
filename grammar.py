@@ -1,13 +1,7 @@
 import readFile
 
 Dict = {}
-<<<<<<< HEAD
-listTerminal = ['import', 'from', 'as', 'object', '\\n']
-
-=======
 listTerminal = readFile.getTerminal('terminal.txt')
->>>>>>> Update file
-
 def ReadFromFile(namaFile):
     with open(namaFile) as cfg:
         lines = cfg.readlines()
@@ -170,7 +164,4 @@ if __name__ == "__main__":
     eiminateOneNonTerminal()
     eiminateOneNonTerminal()
     print(Dict)
-<<<<<<< HEAD
-=======
     print(listTerminal)
->>>>>>> Update file

@@ -88,8 +88,8 @@ CBRACKET ->]
 IF -> if
 ELIF -> elif
 ELSE -> else
-COLON ->:
-COMMA ->,
+COLON -> :
+COMMA -> ,
 RETURN -> return
 DEF -> def
 CLASS -> class
