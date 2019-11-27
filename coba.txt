@@ -1,4 +1,6 @@
 import object as object 
 import object 
-def cok():
-    print()
+def aku(tolong,aku.di(tubes),ini) -> diakah:
+    kamu(AAAAAAA,TOLONG.AKU(BANG),MBAAA)
+
+print()
