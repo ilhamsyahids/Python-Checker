@@ -1,16 +1,13 @@
 import grammar
 import readFile
 
-terminalInput = readFile.inputFromText('coba.txt')
-print(terminalInput)
-banyakTerminal = len(terminalInput)
-rule = grammar.makeRule('grammar.txt')
-tabel = [[[] for j in range(banyakTerminal)] for i in range(banyakTerminal)]
 dp = {}
 
 
 def nonTerminalOf(X):
 # mencari nonterminal dari suatu terminal input
+    if (X[0][0]>='0' and X[0][0]<='9'):
+        return ['NUMBER']
     resNonTerminal = []
     for key, val in rule.items():
         if (X in val):
@@ -78,14 +75,29 @@ def printTabel():
             print(tabel[row][col],end=' ')
         print()
 
-if __name__ == "__main__":    
-    # print('Ini rule')
-    # for k,v in sorted(rule.items()):
-    #     print(k,v)
+def python_checker():
+    global terminalInput,banyakTerminal, tabel, rule
+
+    namaFile = input('Masukkan nama file: ')
+    terminalInput = readFile.inputFromText(namaFile)
+    print(terminalInput)
+    banyakTerminal = len(terminalInput)
+    
+    rule = grammar.makeRule('test.txt') # file grammar
+    tabel = [[[] for j in range(banyakTerminal)] for i in range(banyakTerminal)]
+    
     cyk()
+    
     print('\nIni hasil')
     printTabel()
     if ('S' in tabel[banyakTerminal-1][0]):
         print('Accepted')
     else:
         print('Syntax Error')
+
+
+if __name__ == "__main__":    
+    # print('Ini rule')
+    # for k,v in sorted(rule.items()):
+    #     print(k,v)
+    python_checker()
