@@ -7,7 +7,12 @@ from
 object
 import
 as
+-=
++=
+/=
+*=
 =
+==
 >
 <
 +
@@ -18,9 +23,13 @@ as
 %
 [
 ]
+with
 if
 elif
 else
+for
+range
+while
 ,
 return
 def

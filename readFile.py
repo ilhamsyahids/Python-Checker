@@ -5,7 +5,6 @@ def inputFromText(namaFile):
     for line in fin.readlines():
         temp = ""
         line = line.strip()
-        print(line)
         isNumber = False
         for cc in line:
             if (cc == " " or (isNumber and (cc < '0' or cc > '9'))):
@@ -39,7 +38,6 @@ def getTerminal(namaFile):
     for line in fin.readlines():
         line = line.strip()
         allTerminals.append(line)
-    # print(allTerminals)
     return allTerminals
 
 

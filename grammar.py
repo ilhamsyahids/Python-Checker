@@ -2,6 +2,8 @@ import readFile
 
 Dict = {}
 listTerminal = readFile.getTerminal('terminal.txt')
+
+
 def ReadFromFile(namaFile):
     with open(namaFile) as cfg:
         lines = cfg.readlines()
@@ -50,7 +52,6 @@ def eliminateTerminalwithNonTerminalRHS():
 
 def eliminateMoreTwoNonTerminalRHS():
     listKey = [k for k in Dict]
-    # print(listKey)
     for posK in range(len(listKey)):
         k = listKey[posK]
         temp = []
@@ -131,7 +132,6 @@ def eiminateOneNonTerminal():
             if (len(eList) == 1):
                 e = eList[0]
                 if (not (e in listTerminal)):
-                    # print(e)
                     targetList = Dict[e]
                     for eTargetList in targetList:
                         newProduction.append(eTargetList)
@@ -147,6 +147,7 @@ def makeRule(file):
     eliminateTerminalwithNonTerminalRHS()
     eliminateMoreTwoNonTerminalRHS()
     changeFormat()
+    eiminateOneNonTerminal()
     eiminateOneNonTerminal()
     eiminateOneNonTerminal()
     return Dict
